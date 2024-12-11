@@ -14,12 +14,24 @@ public class AdministradorService {
     @Autowired
     private AdministradorRepository administradorRepository;
 
-    public List<Administrador> geAdministrador() throws Exception {
+    public List<Administrador> getAllAdministrador() throws Exception {
         try {
             return administradorRepository.findAll();
         } catch (Exception e) {
             throw new Exception("Error fetching data: " + e.getMessage());
 
         }
+    }
+
+    public Administrador updateAdministrador(Administrador administrador) throws Exception {
+        Administrador administradorUpdate = administradorRepository.findById(administrador.getId())
+                .orElseThrow(() -> new Exception("Este administrador no existe!"));
+
+        administradorUpdate.setNombre(administrador.getNombre());
+        administradorUpdate.setEmail(administrador.getEmail());
+        administradorUpdate.setUsername(administrador.getUsername());
+        administradorUpdate.setPassword(administrador.getPassword());
+
+        return administradorRepository.save(administradorUpdate);
     }
 }

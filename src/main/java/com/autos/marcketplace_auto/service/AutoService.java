@@ -22,7 +22,7 @@ public class AutoService {
         }
     }
 
-    public List<Auto> getAllAdministrador() throws Exception {
+    public List<Auto> getAllAutos() throws Exception {
         try {
             return autoRepository.findAll();
         } catch (Exception e) {
