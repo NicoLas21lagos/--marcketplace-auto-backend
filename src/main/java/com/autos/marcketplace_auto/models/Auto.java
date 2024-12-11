@@ -23,6 +23,9 @@ public class Auto {
     private String marca;
 
     @Column(nullable = false)
+    private String modelo;
+
+    @Column(nullable = false)
     private double precio;
 
     @Column(nullable = false)
